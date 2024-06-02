@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.aerospike.config.AbstractAerospikeDataConfiguration;
+import org.springframework.data.aerospike.config.AerospikeSettings;
 import org.springframework.data.aerospike.convert.MappingAerospikeConverter;
 import org.springframework.data.aerospike.core.AerospikeExceptionTranslator;
 import org.springframework.data.aerospike.core.AerospikeTemplate;
@@ -15,6 +16,7 @@ import org.springframework.data.aerospike.mapping.AerospikeMappingContext;
 import org.springframework.data.aerospike.query.QueryEngine;
 import org.springframework.data.aerospike.query.cache.IndexRefresher;
 import org.springframework.data.aerospike.repository.config.EnableAerospikeRepositories;
+import org.springframework.data.aerospike.server.version.ServerVersionSupport;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -31,7 +33,8 @@ public class AerospikeUsersConfiguration extends AbstractAerospikeDataConfigurat
 
     @Override
     protected String nameSpace() {
-        return "users";
+//        return "users";
+        return "test";
     }
 
     @Bean(name = "aerospikeTemplateUsers")
@@ -39,9 +42,10 @@ public class AerospikeUsersConfiguration extends AbstractAerospikeDataConfigurat
                                                MappingAerospikeConverter mappingAerospikeConverter,
                                                AerospikeMappingContext aerospikeMappingContext,
                                                AerospikeExceptionTranslator aerospikeExceptionTranslator,
-                                               QueryEngine queryEngine,
-                                               IndexRefresher indexRefresher) {
+                                               QueryEngine queryEngine, IndexRefresher indexRefresher,
+                                               ServerVersionSupport serverVersionSupport, AerospikeSettings settings) {
         return new AerospikeTemplate(aerospikeClient, nameSpace(), mappingAerospikeConverter,
-                aerospikeMappingContext, aerospikeExceptionTranslator, queryEngine, indexRefresher);
+                aerospikeMappingContext, aerospikeExceptionTranslator, queryEngine, indexRefresher,
+                serverVersionSupport);
     }
 }

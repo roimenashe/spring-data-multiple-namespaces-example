@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.5.3</version>
+		<version>3.3.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.aerospike.demo</groupId>
@@ -14,7 +14,7 @@
 	<name>spring-data-multiple-namespaces-example</name>
 	<description>An example of using multiple namespaces with Spring Data Aerospike</description>
 	<properties>
-		<java.version>11</java.version>
+		<java.version>17</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -24,7 +24,7 @@
 		<dependency>
 			<groupId>com.aerospike</groupId>
 			<artifactId>spring-data-aerospike</artifactId>
-			<version>3.1.0</version>
+			<version>4.8.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
