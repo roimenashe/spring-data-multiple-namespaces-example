@@ -33,12 +33,11 @@ public class AerospikeUsersConfiguration extends AbstractAerospikeDataConfigurat
 
     @Override
     protected String nameSpace() {
-//        return "users";
-        return "test";
+        return "users";
     }
 
     @Bean(name = "aerospikeTemplateUsers")
-    public AerospikeTemplate aerospikeTemplate(IAerospikeClient aerospikeClient,
+    public AerospikeTemplate aerospikeTemplateUsers(IAerospikeClient aerospikeClient,
                                                MappingAerospikeConverter mappingAerospikeConverter,
                                                AerospikeMappingContext aerospikeMappingContext,
                                                AerospikeExceptionTranslator aerospikeExceptionTranslator,
