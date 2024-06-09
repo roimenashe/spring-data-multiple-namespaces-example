@@ -22,7 +22,7 @@ public class ExampleTests {
 
     @Test
     public void userTest() {
-        User user = new User(1, "consumer1", "consumer1@gmail.com", 30);
+        User user = new User(1, "user1", "user1@gmail.com", 30);
         aerospikeUsersRepository.save(user);
 
         Optional<User> userFromDB = aerospikeUsersRepository.findById(user.getId());

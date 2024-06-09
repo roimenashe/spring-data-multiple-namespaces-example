@@ -22,7 +22,7 @@ public class ExampleReactiveTests {
 
     @Test
     public void consumerTest() {
-        Consumer consumer = new Consumer(1, "user1", "user1@gmail.com", 30);
+        Consumer consumer = new Consumer(1, "consumer1", "consumer1@gmail.com", 30);
         aerospikeUsersReactiveRepository.save(consumer).block();
 
         Optional<Consumer> userFromDB = aerospikeUsersReactiveRepository.findById(consumer.getId()).blockOptional();
