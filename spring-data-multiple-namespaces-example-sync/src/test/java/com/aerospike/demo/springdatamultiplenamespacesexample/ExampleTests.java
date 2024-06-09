@@ -1,8 +1,8 @@
 package com.aerospike.demo.springdatamultiplenamespacesexample;
 
-import com.aerospike.demo.springdatamultiplenamespacesexample.objects.Consumer;
 import com.aerospike.demo.springdatamultiplenamespacesexample.objects.Product;
-import com.aerospike.demo.springdatamultiplenamespacesexample.repositories.AerospikeConsumersRepository;
+import com.aerospike.demo.springdatamultiplenamespacesexample.objects.User;
+import com.aerospike.demo.springdatamultiplenamespacesexample.repositories.AerospikeUsersRepository;
 import com.aerospike.demo.springdatamultiplenamespacesexample.repositories.AerospikeProductsRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,17 +16,17 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class ExampleTests {
 
     @Autowired
-    AerospikeConsumersRepository aerospikeUsersRepository;
+    AerospikeUsersRepository aerospikeUsersRepository;
     @Autowired
     AerospikeProductsRepository aerospikeProductsRepository;
 
     @Test
-    public void consumerTest() {
-        Consumer consumer = new Consumer(1, "consumer1", "consumer1@gmail.com", 30);
-        aerospikeUsersRepository.save(consumer);
+    public void userTest() {
+        User user = new User(1, "consumer1", "consumer1@gmail.com", 30);
+        aerospikeUsersRepository.save(user);
 
-        Optional<Consumer> userFromDB = aerospikeUsersRepository.findById(consumer.getId());
-        assertThat(userFromDB).hasValue(consumer);
+        Optional<User> userFromDB = aerospikeUsersRepository.findById(user.getId());
+        assertThat(userFromDB).hasValue(user);
     }
 
     @Test

@@ -8,7 +8,7 @@ import org.springframework.data.annotation.Id;
 @Data
 @Document
 @AllArgsConstructor
-public class Consumer {
+public class User {
     @Id
     private int id;
     private String name;

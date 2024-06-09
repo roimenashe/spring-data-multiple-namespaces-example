@@ -1,9 +1,9 @@
 package com.aerospike.demo.springdatamultiplenamespacesexamplereactive;
 
+import com.aerospike.demo.springdatamultiplenamespacesexamplereactive.objects.Consumer;
 import com.aerospike.demo.springdatamultiplenamespacesexamplereactive.objects.Item;
-import com.aerospike.demo.springdatamultiplenamespacesexamplereactive.objects.User;
-import com.aerospike.demo.springdatamultiplenamespacesexamplereactive.repositories.AerospikeItemsReactiveRepository;
-import com.aerospike.demo.springdatamultiplenamespacesexamplereactive.repositories.AerospikeUsersReactiveRepository;
+import com.aerospike.demo.springdatamultiplenamespacesexamplereactive.repositories.ReactiveAerospikeItemsRepository;
+import com.aerospike.demo.springdatamultiplenamespacesexamplereactive.repositories.ReactiveAerospikeConsumersRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -16,17 +16,17 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class ExampleReactiveTests {
 
     @Autowired
-    AerospikeUsersReactiveRepository aerospikeUsersReactiveRepository;
+    ReactiveAerospikeConsumersRepository aerospikeUsersReactiveRepository;
     @Autowired
-    AerospikeItemsReactiveRepository aerospikeItemsReactiveRepository;
+    ReactiveAerospikeItemsRepository aerospikeItemsReactiveRepository;
 
     @Test
-    public void userTest() {
-        User user = new User(1, "user1", "user1@gmail.com", 30);
-        aerospikeUsersReactiveRepository.save(user).block();
+    public void consumerTest() {
+        Consumer consumer = new Consumer(1, "user1", "user1@gmail.com", 30);
+        aerospikeUsersReactiveRepository.save(consumer).block();
 
-        Optional<User> userFromDB = aerospikeUsersReactiveRepository.findById(user.getId()).blockOptional();
-        assertThat(userFromDB).hasValue(user);
+        Optional<Consumer> userFromDB = aerospikeUsersReactiveRepository.findById(consumer.getId()).blockOptional();
+        assertThat(userFromDB).hasValue(consumer);
     }
 
     @Test
