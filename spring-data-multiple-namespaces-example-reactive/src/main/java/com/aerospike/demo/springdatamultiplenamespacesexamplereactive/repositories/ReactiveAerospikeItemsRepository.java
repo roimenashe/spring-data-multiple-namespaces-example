@@ -1,0 +1,9 @@
+package com.aerospike.demo.springdatamultiplenamespacesexamplereactive.repositories;
+
+import com.aerospike.demo.springdatamultiplenamespacesexamplereactive.annotations.ReactiveItemsRepository;
+import com.aerospike.demo.springdatamultiplenamespacesexamplereactive.objects.Item;
+import org.springframework.data.aerospike.repository.ReactiveAerospikeRepository;
+
+@ReactiveItemsRepository
+public interface ReactiveAerospikeItemsRepository extends ReactiveAerospikeRepository<Item, Integer> {
+}
