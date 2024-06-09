@@ -16,25 +16,25 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class ExampleTests {
 
     @Autowired
-    AerospikeUsersRepository aerospikeUsersRepository;
+    AerospikeUsersRepository usersRepository;
     @Autowired
-    AerospikeProductsRepository aerospikeProductsRepository;
+    AerospikeProductsRepository productsRepository;
 
     @Test
     public void userTest() {
         User user = new User(1, "user1", "user1@gmail.com", 30);
-        aerospikeUsersRepository.save(user);
+        usersRepository.save(user);
 
-        Optional<User> userFromDB = aerospikeUsersRepository.findById(user.getId());
+        Optional<User> userFromDB = usersRepository.findById(user.getId());
         assertThat(userFromDB).hasValue(user);
     }
 
     @Test
     public void productTest() {
         Product product = new Product(1, "product1", "product1@gmail.com", "iron");
-        aerospikeProductsRepository.save(product);
+        productsRepository.save(product);
 
-        Optional<Product> productFromDB = aerospikeProductsRepository.findById(product.getId());
+        Optional<Product> productFromDB = productsRepository.findById(product.getId());
         assertThat(productFromDB).hasValue(product);
     }
 }

@@ -16,25 +16,25 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class ExampleReactiveTests {
 
     @Autowired
-    ReactiveAerospikeConsumersRepository aerospikeUsersReactiveRepository;
+    ReactiveAerospikeConsumersRepository consumersRepository;
     @Autowired
-    ReactiveAerospikeItemsRepository aerospikeItemsReactiveRepository;
+    ReactiveAerospikeItemsRepository itemsRepository;
 
     @Test
     public void consumerTest() {
         Consumer consumer = new Consumer(1, "consumer1", "consumer1@gmail.com", 30);
-        aerospikeUsersReactiveRepository.save(consumer).block();
+        consumersRepository.save(consumer).block();
 
-        Optional<Consumer> userFromDB = aerospikeUsersReactiveRepository.findById(consumer.getId()).blockOptional();
-        assertThat(userFromDB).hasValue(consumer);
+        Optional<Consumer> consumerFromDB = consumersRepository.findById(consumer.getId()).blockOptional();
+        assertThat(consumerFromDB).hasValue(consumer);
     }
 
     @Test
     public void itemTest() {
         Item item = new Item(1, "item1", "item1@gmail.com", "iron");
-        aerospikeItemsReactiveRepository.save(item).block();
+        itemsRepository.save(item).block();
 
-        Optional<Item> productFromDB = aerospikeItemsReactiveRepository.findById(item.getId()).blockOptional();
-        assertThat(productFromDB).hasValue(item);
+        Optional<Item> itemFromDB = itemsRepository.findById(item.getId()).blockOptional();
+        assertThat(itemFromDB).hasValue(item);
     }
 }

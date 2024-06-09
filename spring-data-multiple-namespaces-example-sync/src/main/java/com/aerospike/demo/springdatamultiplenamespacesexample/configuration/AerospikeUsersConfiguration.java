@@ -25,8 +25,8 @@ import java.util.Collections;
 @Configuration
 @EnableAerospikeRepositories(basePackageClasses = AerospikeUsersRepository.class,
         includeFilters = @ComponentScan.Filter(UsersRepository.class),
-        aerospikeTemplateRef = "aerospikeTemplateConsumers")
-public class AerospikeUserConfiguration extends AbstractAerospikeDataConfiguration {
+        aerospikeTemplateRef = "aerospikeTemplateUsers")
+public class AerospikeUsersConfiguration extends AbstractAerospikeDataConfiguration {
     @Override
     protected Collection<Host> getHosts() {
         return Collections.singleton(new Host("localhost", 3000));
@@ -34,19 +34,19 @@ public class AerospikeUserConfiguration extends AbstractAerospikeDataConfigurati
 
     @Override
     protected String nameSpace() {
-        return "consumers";
+        return "users";
     }
 
     @Override
     protected ClientPolicy getClientPolicy() {
         ClientPolicy clientPolicy = super.getClientPolicy(); // applying default values first
-        clientPolicy.user = "tester";
-        clientPolicy.password = "psw";
+        clientPolicy.user = "user";
+        clientPolicy.password = "password";
         return clientPolicy;
     }
 
-    @Bean(name = "aerospikeTemplateConsumers")
-    public AerospikeTemplate aerospikeTemplateConsumers(IAerospikeClient aerospikeClient,
+    @Bean(name = "aerospikeTemplateUsers")
+    public AerospikeTemplate aerospikeTemplateUsers(IAerospikeClient aerospikeClient,
                                                MappingAerospikeConverter mappingAerospikeConverter,
                                                AerospikeMappingContext aerospikeMappingContext,
                                                AerospikeExceptionTranslator aerospikeExceptionTranslator,

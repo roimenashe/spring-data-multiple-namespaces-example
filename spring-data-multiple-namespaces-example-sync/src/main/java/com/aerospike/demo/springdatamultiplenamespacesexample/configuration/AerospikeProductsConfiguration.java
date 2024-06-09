@@ -40,8 +40,8 @@ public class AerospikeProductsConfiguration extends AbstractAerospikeDataConfigu
     @Override
     protected ClientPolicy getClientPolicy() {
         ClientPolicy clientPolicy = super.getClientPolicy(); // applying default values first
-        clientPolicy.user = "tester";
-        clientPolicy.password = "psw";
+        clientPolicy.user = "user";
+        clientPolicy.password = "password";
         return clientPolicy;
     }
 
